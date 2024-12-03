@@ -1,0 +1,31 @@
+<!-- 关注弹窗 -->
+<script type="text/javascript">
+const M={
+    init(){
+        document.head.appendChild(Object.assign(document.createElement('style'),{
+            textContent:`.m{position:fixed;inset:0;background:#0007;z-index:9;display:none}
+            .s{display:grid;place-items:center}
+            .c{background:#fff;max-width:380px;width:85%;text-align:center;padding:1.25rem;border-radius:.75rem}
+            .x{float:right;cursor:pointer}
+            .popup-img{width:100%;margin:1rem 0}
+            .b{border:0;cursor:pointer;color:#fff;background:#4CAF50;padding:.6rem 1.5rem;border-radius:1.5rem}`
+        }));
+
+        document.body.insertAdjacentHTML('beforeend',
+            `<div id="m" class="m"><div class="c"><span class="x" onclick="M.h()">×</span>
+            <h4>地址更新频繁，关注防走丢！</h4>
+            <img class="popup-img" src="https://img.yunpan1.net/vxeg.png">
+            <button class="b" onclick="M.h(1)">近期不再提醒</button></div></div>`
+        );
+
+        this.d = document.getElementById('m');
+        !localStorage.n && setTimeout(()=>this.d.classList.add('s'),200);
+    },
+    h(r){
+        this.d.classList.remove('s');
+        r && (localStorage.n = 1);
+    }
+};
+
+addEventListener('DOMContentLoaded',()=>M.init());
+</script>
